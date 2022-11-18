@@ -61,7 +61,8 @@ button:hover{
   'GRAD' 0,
   'opsz' 48
 }
-.material-symbols-outlined.active{
+.material-symbols-outlined.active,
+.colors button>span:hover{
     font-variation-settings:
     'FILL' 1
 }
@@ -101,7 +102,8 @@ ul.projects{
     border-radius: 1em;
     padding:2em;
 }
-.cover{
+.cover,
+.project-cover{
     position: fixed;
     height:100vh;
     width:100vw;
@@ -111,19 +113,23 @@ ul.projects{
     display: flex;
     flex-direction: column;
 }
-.item-popup input{
+.item-popup input,
+.add-project-popup input{
     color:white;
     font-size: 18px;
     background: transparent;
     border:none;
     border-bottom: 1px solid;
 }
-.popup input:focus{
+.popup input:focus,
+.add-project-popup input:focus{
     outline:0;
 }
 .btns>button,
 .priority button,
-.change-project button{
+.change-project button,
+.add-project-popup button,
+.colors button{
     background: transparent;
     color:white;
     border:none;
@@ -132,6 +138,9 @@ ul.projects{
     align-items: center;
     font: inherit;
     gap:0.2em;
+}
+.colors button{
+    gap:0;
 }
 .btns{
     display:grid;
@@ -183,8 +192,24 @@ ul.projects{
 .change-project{
     left:7.6em;
 }
+.colors{
+    display:flex;
+    position:relative;
+    top:-1.7em;
+    left:1.5em;
+    background-color: #333;
+    padding:0.5em;
+    border-radius: 5px;
+    width:min-content;
+    z-index:1;
+}
+.colors li:hover,
+.colors button:hover{
+    filter:opacity(100%);
+}
 .priority>ul,
-.change-project>ul{
+.change-project>ul,
+.colors>ul{
     display:flex;
     flex-direction: column;
     gap:0.5em;
@@ -216,6 +241,31 @@ ul.projects{
 .low>span,
 #low>span{
     color:#ffbb00;
+}
+.add-project-popup{
+    position:relative;
+    background-color:var(--medium-gray);
+    display: flex;
+    gap:0.5em;
+    padding:1em;
+    left:1em;
+    border-radius: 5px;
+    z-index:1;
+}
+.add-project-popup input{
+    font-size:16px;
+}
+.color-2>span{
+    color:#5EFC8D;
+}
+.color-3>span{
+    color:#8EF9F3;
+}
+.color-4>span{
+    color:#8377D1;
+}
+.color-5>span{
+    color:#d7606c;
 }
 .additional-data>.hidden,
 .hidden{
