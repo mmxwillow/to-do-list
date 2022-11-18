@@ -1,15 +1,15 @@
-export default function controlToDoPopup() {
-    const additionalData = document.querySelector('.additional-data');
-    const datetime = document.querySelector('.datetime');
-    const description = document.querySelector('.description');
-    const priority = document.querySelector('.priority');
-    const priorityBtn = document.querySelector('#priority');
-    const changePriority = document.querySelectorAll('.change-priority');
-    const projectsBtn = document.querySelector('#projects');
-    const changeProject = document.querySelector('.change-project');
-    const currentProject = document.querySelector('#current-project');
-    const allProjects = document.querySelectorAll('.change-project button')
+const additionalData = document.querySelector('.additional-data');
+const datetime = document.querySelector('.datetime');
+const description = document.querySelector('.description');
+const priority = document.querySelector('.priority');
+const priorityBtn = document.querySelector('#priority');
+const changePriority = document.querySelectorAll('.change-priority');
+const projectsBtn = document.querySelector('#projects');
+const changeProject = document.querySelector('.change-project');
+const currentProject = document.querySelector('#current-project');
+const allProjects = document.querySelectorAll('.change-project button')
 
+export default function controlToDoPopup() {
     document.querySelector('#due-date').addEventListener('click', () => {
         if(description.classList.contains('hidden')) additionalData.classList.toggle('hidden');
         datetime.classList.toggle('hidden');
@@ -48,11 +48,26 @@ export default function controlToDoPopup() {
         }
     })
 
-    const toggleItemPopup = () =>  {
-        document.querySelector('.popup').classList.toggle('hidden');
-        document.querySelector('.cover').classList.toggle('hidden');
-    }
-
     document.querySelector('.cover').addEventListener('click', toggleItemPopup)
     document.querySelector('.add-item-popup').addEventListener('click', toggleItemPopup)
+}
+
+export function resetForm() {
+    document.querySelector('form').reset();
+
+    priorityBtn.removeAttribute('class');
+    priorityBtn.classList.add('none');
+
+    projectsBtn.firstChild.innerHTML = 'inbox';
+    currentProject.innerHTML = 'Inbox';
+
+    toggleItemPopup();
+}
+
+function toggleItemPopup() {
+    document.querySelector('.popup').classList.toggle('hidden');
+    document.querySelector('.cover').classList.toggle('hidden');
+    additionalData.classList.add('hidden')
+    datetime.classList.add('hidden');
+    description.classList.add('hidden');
 }
