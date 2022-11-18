@@ -72,7 +72,87 @@
         </div>
     </div>
     <div class="content">
-
+        <button class="add-item-popup"><span class="material-symbols-outlined">
+            add
+            </span></button>
+    </div>
+    <div class="cover hidden"></div>
+    <div class="popup hidden">
+        <form class="item-popup">
+            <input type="text" placeholder="What would you like to do?">
+            <div class="btns">
+                <button title="Due date" id="due-date" type="button">
+                    <span class="material-symbols-outlined">
+                        calendar_month
+                        </span>
+                </button>
+                <button title="Description" id="description" type="button">
+                    <span class="material-symbols-outlined">
+                        description
+                        </span>
+                </button>
+                <button title="Priority" id="priority" type="button"><span class="material-symbols-outlined">flag</span></button>
+                <button title="Project" id="projects" type="button"><span class="material-symbols-outlined">inbox</span>
+                        <div id="current-project">Inbox</div>
+                </button>
+                <button type="submit">
+                    <span class="material-symbols-outlined">
+                        send
+                        </span>
+                </button>
+            </div>
+            <div class="menus">
+                <div class="priority hidden">
+                    <ul>
+                        <li>
+                            <button id="none" class="change-priority" type="button">
+                                <span class="material-symbols-outlined">
+                                    flag
+                                    </span>None
+                            </button>
+                        </li>
+                        <li>
+                            <button id="low" class="change-priority" type="button">
+                                <span class="material-symbols-outlined">
+                                    flag
+                                    </span>Low
+                            </button>
+                        </li><li>
+                            <button id="medium" class="change-priority" type="button">
+                                <span class="material-symbols-outlined">
+                                    flag
+                                    </span>Medium
+                            </button>
+                        </li><li>
+                            <button id="high" class="change-priority" type="button">
+                                <span class="material-symbols-outlined">
+                                    flag
+                                    </span>High
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="change-project hidden">
+                    <ul>
+                        <li>
+                            <button type="button"><span class="material-symbols-outlined">inbox</span><div>Inbox</div></button>
+                        </li>
+                        <li>
+                            <button type="button"><span class="material-symbols-outlined">fiber_manual_record</span><div>Mike's b-day</div></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="additional-data hidden">
+                <div class="datetime hidden">
+                    <input type="date" name="" id="">
+                    <input type="time" name="" id="">
+                </div>
+                <div class="description hidden">
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Describe this to-do!"></textarea>
+                </div>
+            </div>
+        </form>
     </div>
     <script src="main.js"></script>
 </body>
