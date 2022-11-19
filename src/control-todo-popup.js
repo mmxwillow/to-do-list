@@ -7,9 +7,10 @@ const changePriority = document.querySelectorAll('.change-priority');
 const projectsBtn = document.querySelector('#projects');
 const changeProject = document.querySelector('.change-project');
 const currentProject = document.querySelector('#current-project');
-const allProjects = document.querySelectorAll('.change-project button')
 
 export default function controlToDoPopup() {
+    const allProjects = document.querySelectorAll('.change-project button')
+
     document.querySelector('#due-date').addEventListener('click', () => {
         if(description.classList.contains('hidden')) additionalData.classList.toggle('hidden');
         datetime.classList.toggle('hidden');
@@ -35,6 +36,7 @@ export default function controlToDoPopup() {
         btn.addEventListener('click', () => {
             projectsBtn.firstChild.innerHTML = btn.firstChild.innerHTML;
             currentProject.innerHTML = btn.lastChild.innerHTML;
+            projectsBtn.className = btn.className;
         })
     })
 
@@ -60,6 +62,7 @@ export function resetForm() {
 
     projectsBtn.firstChild.innerHTML = 'inbox';
     currentProject.innerHTML = 'Inbox';
+    projectsBtn.className = '';
 
     toggleItemPopup();
 }
