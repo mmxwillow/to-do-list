@@ -20,7 +20,7 @@ const allItems = [];
 export default function addToDoItem() {
     document.querySelector('#submit-task').addEventListener('click', (ev) => {
         ev.preventDefault();
-        const taskName = document.querySelector('input[type="text"]').value;
+        const taskName = document.querySelector('#task-name').value;
         const taskDescription = document.querySelector('textarea').innerHTML;
         const taskDueDate = getDate();
         const taskPriority = document.querySelector('#priority').className;

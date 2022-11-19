@@ -48,8 +48,8 @@ export default function controlToDoPopup() {
         }
     })
 
-    document.querySelector('.cover').addEventListener('click', toggleItemPopup)
-    document.querySelector('.add-item-popup').addEventListener('click', toggleItemPopup)
+    document.querySelector('.cover').addEventListener('click', resetForm)
+    document.querySelector('.add-item-popup').addEventListener('click', resetForm)
 }
 
 export function resetForm() {

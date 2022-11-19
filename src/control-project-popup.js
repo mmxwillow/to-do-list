@@ -6,8 +6,8 @@ const allColors = document.querySelectorAll('.colors button');
 const cover = document.querySelector('.project-cover');
 
 export default function controlProjectPopup() {
-    addProject.addEventListener('click', toggleProjectPopup);
-    cover.addEventListener('click', toggleProjectPopup);
+    addProject.addEventListener('click', resetProjectForm);
+    cover.addEventListener('click', resetProjectForm);
 
     allColors.forEach((btn) => {
         btn.addEventListener('click', () => {
