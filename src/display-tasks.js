@@ -3,6 +3,7 @@ import { allProjects } from "./projects";
 
 const groupedTasks = [];
 let currentID;
+let isHidden = false;
 
 export function groupTasks() {
     if (allItems.length == 0) {
@@ -62,8 +63,10 @@ export default function displayTasks(id=currentID) {
             document.querySelector('.todo').appendChild(li);
         }
         else {
-            document.querySelector('section').classList.remove('hidden');
-            document.querySelector('.completed').classList.remove('hidden');
+            if(!isHidden){
+                document.querySelector('section').classList.remove('hidden');
+                document.querySelector('.completed').classList.remove('hidden');
+            }
             document.querySelector('.completed').appendChild(li);
         }
     })
@@ -77,7 +80,39 @@ export default function displayTasks(id=currentID) {
             displayTasks();
         })
     })
+
 }
 
 
+function controlCompleted() {
+    const header = document.querySelector('section');
+    const completed = document.querySelector('.completed');
+    const button = document.querySelector('section button span');
+    const menu = document.querySelector('.project-options');
+    const menuButton = document.querySelector('header button');
+    const toggle = document.querySelector('#completed-toggle');
 
+    header.addEventListener('click', () => {
+        completed.classList.toggle('hidden');
+        button.innerHTML = (button.innerHTML === 'expand_more') ? 'expand_less' : 'expand_more';
+    })
+
+    menuButton.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    })
+
+    toggle.addEventListener('click', ()=> {
+        isHidden = !isHidden;
+        document.querySelector('section').classList.toggle('hidden');
+        document.querySelector('.completed').classList.toggle('hidden');
+        toggle.innerHTML = (toggle.innerHTML.includes("Hide")) ? "Show completed" : "Hide completed";
+    })
+
+    window.addEventListener('click', (e) => {
+        if(e.target != menuButton && e.target != menuButton.firstChild){
+            menu.classList.add('hidden');
+        }
+    })
+}
+
+controlCompleted();
