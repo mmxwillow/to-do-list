@@ -55,7 +55,7 @@ export default function controlToDoPopup() {
 }
 
 export function resetForm() {
-    document.querySelector('form').reset();
+    document.querySelector('.item-popup').reset();
 
     priorityBtn.removeAttribute('class');
     priorityBtn.classList.add('none');

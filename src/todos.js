@@ -1,7 +1,8 @@
 import { resetForm } from "./control-todo-popup";
+import displayTasks from './display-tasks'
 
 class ToDoItem{
-    constructor(title,description,dueDate,priority,project,isDone="false"){
+    constructor(title,description,dueDate,priority,project,isDone){
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
@@ -15,7 +16,16 @@ class ToDoItem{
     }
 }
 
-const allItems = [];
+export const allItems = [];
+
+export function examples(){
+    const example1 = new ToDoItem("Bake a cake", "","","","Inbox",false);
+    const example2 = new ToDoItem("Send invitations", "","","","Inbox",true);
+
+    allItems.push(example1);
+    allItems.push(example2);
+}
+
 
 export default function addToDoItem() {
     document.querySelector('#submit-task').addEventListener('click', (ev) => {
@@ -26,11 +36,11 @@ export default function addToDoItem() {
         const taskPriority = document.querySelector('#priority').className;
         const taskProject = document.querySelector('#current-project').innerHTML;
 
-        const newTask = new ToDoItem(taskName, taskDescription, taskDueDate, taskPriority, taskProject);
+        const newTask = new ToDoItem(taskName, taskDescription, taskDueDate, taskPriority, taskProject, false);
         allItems.push(newTask);
-        console.log(newTask)
 
         resetForm();
+        displayTasks();
     })
 }
 

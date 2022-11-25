@@ -4,6 +4,7 @@ import { allProjects } from "./projects";
 
 export default function displayProjects() {
     document.querySelector('.projects').innerHTML = '';
+    let i = 4;
 
     allProjects.forEach((project) => {
         const liSidebar = document.createElement('li');
@@ -11,6 +12,7 @@ export default function displayProjects() {
         const div = document.createElement('div');
 
         liSidebar.className = project.color;
+        liSidebar.id = i++;
         span.innerHTML = project.icon;
         span.className = 'material-symbols-outlined';
         div.innerHTML = project.name;

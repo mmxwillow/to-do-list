@@ -1,17 +1,20 @@
+import displayTasks from "./display-tasks";
+
 export default function controlSidebar() {
     const controlIcons = () => {
-        const projectsAll = document.querySelectorAll('li');
+        const projectsAll = document.querySelectorAll('.list li');
 
         projectsAll.forEach((project) => {
             project.addEventListener('click', () => {
                 clearActiveClass();
-                project.firstElementChild.classList.add('active');
+                project.classList.add('active');
+                displayTasks(project.id);
             })
         });
 
         const clearActiveClass = (() => {
             projectsAll.forEach((project) => {
-                project.firstElementChild.classList.remove('active');
+                project.classList.remove('active');
             })
         });
     }
