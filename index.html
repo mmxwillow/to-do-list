@@ -13,32 +13,12 @@
 
 <body>
     <div class="sidebar">
-        <div class="default">
+        <div class="default list">
             <ul>
-                <li>
-                    <span class="material-symbols-outlined">
-                        home_storage
-                        </span>
-                        <div>All</div>
-                </li>
-                <li>
-                    <span class="material-symbols-outlined">
-                        inbox
-                    </span>
-                    <div>Inbox</div>
-                </li>
-                <li>
-                    <span class="material-symbols-outlined">
-                        today
-                    </span>
-                    <div>Today</div>
-                </li>
-                <li>
-                    <span class="material-symbols-outlined">
-                        date_range
-                    </span>
-                    <div>This week</div>
-                </li>
+                <li id="0" class="active"><span class="material-symbols-outlined">home_storage</span><div>All</div></li>
+                <li id="1"><span class="material-symbols-outlined">inbox</span><div>Inbox</div></li>
+                <li id="2"><span class="material-symbols-outlined">today</span><div>Today</div></li>
+                <li id="3"><span class="material-symbols-outlined">date_range</span><div>This week</div></li>
             </ul>
         </div>
         <div>
@@ -46,7 +26,7 @@
                 <span class="material-symbols-outlined">expand_more</span>
                 <div>Projects</div>
             </div>
-            <ul class="projects"></ul>
+            <ul class="projects list"></ul>
             <div class="add-project">
                 <span class="material-symbols-outlined">
                     add
@@ -56,7 +36,7 @@
             <form class="add-project-popup hidden">
                 <button id="current-color" class="color-1" type="button"><span class="material-symbols-outlined">fiber_manual_record</span>
                 </button>
-                <input id="new-project-name" type="text" placeholder="New project name">
+                <input id="new-project-name" type="text" placeholder="New project name" autocomplete="off">
                 <button id="submit-project">
                     <span class="material-symbols-outlined">
                         send
@@ -88,108 +68,16 @@
     <div class="content">
         <main>
             <header>
-                <span class="material-symbols-outlined">inbox</span>
-                <h1>Inbox</h1>
+                <span class="material-symbols-outlined"></span>
+                <h1></h1>
                 <button><span class="material-symbols-outlined">more_vert</span></button>
             </header>
-            <ul class="tasks">
-                <li>
-                    <input type="checkbox" name="" id="">
-                    <div class="task-name">Lol</div>
-                    <div class="date">Today</div>
-                    <button class="edit">
-                        <span class="material-symbols-outlined">
-                            edit
-                            </span>
-                    </button>
-                    <button class="remove">
-                        <span class="material-symbols-outlined">
-                            delete
-                            </span>
-                    </button>
-                </li>
-                <li>
-                    <input type="checkbox" name="" id="">
-                    <div class="task-name">Lol</div>
-                    <div class="date">Today</div>
-                    <button class="edit">
-                        <span class="material-symbols-outlined">
-                            edit
-                            </span>
-                    </button>
-                    <button class="remove">
-                        <span class="material-symbols-outlined">
-                            delete
-                            </span>
-                    </button>
-                </li>
-                <li>
-                    <input type="checkbox" name="" id="">
-                    <div class="task-name">Lol</div>
-                    <div class="date">Today</div>
-                    <button class="edit">
-                        <span class="material-symbols-outlined">
-                            edit
-                            </span>
-                    </button>
-                    <button class="remove">
-                        <span class="material-symbols-outlined">
-                            delete
-                            </span>
-                    </button>
-                </li>
-            </ul>
-            <section>
+            <ul class="tasks todo"></ul>
+            <section class="hidden">
                 <button><span class="material-symbols-outlined">expand_more</span></button>
                 <h2>Completed</h2>
             </section>
-            <ul class="tasks completed">
-                <li>
-                    <input type="checkbox" name="" id="">
-                    <div class="task-name">Lol</div>
-                    <div class="date">Today</div>
-                    <button class="edit">
-                        <span class="material-symbols-outlined">
-                            edit
-                            </span>
-                    </button>
-                    <button class="remove">
-                        <span class="material-symbols-outlined">
-                            delete
-                            </span>
-                    </button>
-                </li>
-                <li>
-                    <input type="checkbox" name="" id="">
-                    <div class="task-name">Lol</div>
-                    <div class="date">Today</div>
-                    <button class="edit">
-                        <span class="material-symbols-outlined">
-                            edit
-                            </span>
-                    </button>
-                    <button class="remove">
-                        <span class="material-symbols-outlined">
-                            delete
-                            </span>
-                    </button>
-                </li>
-                <li>
-                    <input type="checkbox" name="" id="">
-                    <div class="task-name">Lol</div>
-                    <div class="date">Today</div>
-                    <button class="edit">
-                        <span class="material-symbols-outlined">
-                            edit
-                            </span>
-                    </button>
-                    <button class="remove">
-                        <span class="material-symbols-outlined">
-                            delete
-                            </span>
-                    </button>
-                </li>
-            </ul>
+            <ul class="tasks completed hidden"></ul>
         </main>
         <button class="add-item-popup"><span class="material-symbols-outlined">
                 add
@@ -198,7 +86,7 @@
     <div class="cover hidden"></div>
     <div class="popup hidden">
         <form class="item-popup">
-            <input type="text" placeholder="What would you like to do?" id="task-name">
+            <input type="text" placeholder="What would you like to do?" id="task-name" autocomplete="off">
             <div class="btns">
                 <button title="Due date" id="due-date" type="button">
                     <span class="material-symbols-outlined">
