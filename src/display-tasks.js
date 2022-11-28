@@ -4,11 +4,13 @@ import { allProjects } from "./projects";
 const groupedTasks = [];
 let currentID;
 let isHidden = false;
+let isFirstSession = true;
 
 export function groupTasks() {
-    if (allItems.length == 0) {
+    if (allItems.length == 0 && isFirstSession) {
         examples();
     }
+    isFirstSession = false;
     let inbox = allItems.filter(item => item.project == "Inbox");
     let today = [];
     let thisWeek = [];
@@ -46,7 +48,7 @@ export default function displayTasks(id=currentID) {
         let status = (task.isDone) ? 'checked' : '';
 
         const item = `
-                <input type="checkbox" ${status} id="${id}${i++}">
+                <input type="checkbox" ${status}>
                 <div class="task-name">${task.title}</div>
                 <div class="date">${task.dueDate}</div>
                 <button class="edit">
@@ -58,6 +60,7 @@ export default function displayTasks(id=currentID) {
         `;
         li.className = task.priority;
         li.innerHTML = item;
+        li.id = `${id}${i++}`;
 
         if (!task.isDone) {
             document.querySelector('.todo').appendChild(li);
@@ -73,10 +76,20 @@ export default function displayTasks(id=currentID) {
 
     document.querySelectorAll('input[type="checkbox"').forEach((input) => {
         input.addEventListener('change', () => {
-            let id = input.id.slice(0,1);
-            let i = input.id.slice(-1);
+            let id = input.parentElement.id.slice(0,1);
+            let i = input.parentElement.id.slice(-1);
             
             groupedTasks[id][i].changeStatus();
+            displayTasks();
+        })
+    })
+
+    document.querySelectorAll('.remove').forEach((button) => {
+        button.addEventListener('click', () => {
+            let id = button.parentElement.id.slice(0,1);
+            let i = button.parentElement.id.slice(-1);
+
+            groupedTasks[id].splice(i,1);
             displayTasks();
         })
     })
