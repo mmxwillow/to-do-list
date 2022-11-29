@@ -32,6 +32,7 @@ export default function displayTasks(id=currentID) {
     const icon = project.firstChild;
     const name = project.lastChild;
     document.querySelector('header').className = project.className;
+    document.querySelector('header').setAttribute('data-id', id);
     document.querySelector('header span').innerHTML = icon.innerHTML;
     document.querySelector('header h1').innerHTML = name.innerHTML;
     document.querySelector('section').classList.add('hidden');
@@ -93,7 +94,7 @@ export default function displayTasks(id=currentID) {
             displayTasks();
         })
     })
-
+    hideButtons();
 }
 
 
@@ -126,6 +127,17 @@ function controlCompleted() {
             menu.classList.add('hidden');
         }
     })
+}
+
+function hideButtons(){
+    if(currentID<4){
+        document.querySelector('#remove-project').classList.add('hidden');
+        document.querySelector('#edit-project').classList.add('hidden');
+    }
+    else{
+        document.querySelector('#remove-project').classList.remove('hidden');
+        document.querySelector('#edit-project').classList.remove('hidden');
+    }
 }
 
 controlCompleted();

@@ -1,6 +1,7 @@
 import controlSidebar from "./control-sidebar";
 import controlToDoPopup from "./control-todo-popup"
 import { allProjects } from "./projects";
+import displayTasks from "./display-tasks";
 
 export default function displayProjects() {
     document.querySelector('.projects').innerHTML = '';
@@ -42,3 +43,11 @@ export default function displayProjects() {
     controlSidebar();
     controlToDoPopup();
 }
+
+document.querySelector('#remove-project').addEventListener('click', () => {
+    let id = document.querySelector('header').getAttribute('data-id') - 4;
+
+    allProjects.splice(id,1);
+    displayProjects();
+    displayTasks(0);
+})
