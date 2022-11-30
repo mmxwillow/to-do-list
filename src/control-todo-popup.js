@@ -8,9 +8,8 @@ const projectsBtn = document.querySelector('#projects');
 const changeProject = document.querySelector('.change-project');
 const currentProject = document.querySelector('#current-project');
 
-export default function controlToDoPopup() {
+function controlToDoPopup() {
     const allProjects = document.querySelectorAll('.change-project button')
-
     document.querySelector('#due-date').addEventListener('click', () => {
         if(description.classList.contains('hidden')) additionalData.classList.toggle('hidden');
         datetime.classList.toggle('hidden');
@@ -22,23 +21,10 @@ export default function controlToDoPopup() {
     priorityBtn.addEventListener('click', () => {
         priority.classList.toggle('hidden');
     })
-    changePriority.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            priorityBtn.removeAttribute('class');
-            priorityBtn.classList.add(btn.id);
-            priority.classList.toggle('hidden');
-        })
-    })
     projectsBtn.addEventListener('click', () => {
         changeProject.classList.toggle('hidden');
     })
-    allProjects.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            projectsBtn.firstChild.innerHTML = btn.firstChild.innerHTML;
-            currentProject.innerHTML = btn.lastChild.innerHTML;
-            projectsBtn.className = btn.className;
-        })
-    })
+    controlMenus();
 
     window.addEventListener('click', (e) => {
         if(e.target !== priorityBtn && e.target !== priorityBtn.firstChild){
@@ -52,6 +38,25 @@ export default function controlToDoPopup() {
 
     document.querySelector('.cover').addEventListener('click', resetForm)
     document.querySelector('.add-item-popup').addEventListener('click', resetForm)
+}
+
+export function controlMenus(){
+    const allProjects = document.querySelectorAll('.change-project button')
+
+    changePriority.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            priorityBtn.removeAttribute('class');
+            priorityBtn.classList.add(btn.id);
+            priority.classList.toggle('hidden');
+        })
+    })
+    allProjects.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            projectsBtn.firstChild.innerHTML = btn.firstChild.innerHTML;
+            currentProject.innerHTML = btn.lastChild.innerHTML;
+            projectsBtn.className = btn.className;
+        })
+    })
 }
 
 export function resetForm() {
@@ -74,3 +79,5 @@ function toggleItemPopup() {
     datetime.classList.add('hidden');
     description.classList.add('hidden');
 }
+
+controlToDoPopup();

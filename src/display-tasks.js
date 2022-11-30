@@ -1,7 +1,7 @@
 import { allItems, examples } from "./todos";
 import { allProjects } from "./projects";
 
-const groupedTasks = [];
+export const groupedTasks = [];
 let currentID;
 let isHidden = false;
 let isFirstSession = true;
@@ -90,7 +90,7 @@ export default function displayTasks(id=currentID) {
             let id = button.parentElement.id.slice(0,1);
             let i = button.parentElement.id.slice(-1);
 
-            groupedTasks[id].splice(i,1);
+            allItems.splice(allItems.findIndex(item => item == groupedTasks[id][i],1));
             displayTasks();
         })
     })

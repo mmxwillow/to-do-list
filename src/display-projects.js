@@ -1,10 +1,13 @@
 import controlSidebar from "./control-sidebar";
-import controlToDoPopup from "./control-todo-popup"
+import { controlMenus } from "./control-todo-popup"
 import { allProjects } from "./projects";
 import displayTasks from "./display-tasks";
+import { groupedTasks } from "./display-tasks";
+import { allItems } from "./todos";
 
 export default function displayProjects() {
     document.querySelector('.projects').innerHTML = '';
+    document.querySelector('.change-project>ul').innerHTML = '<li><button type="button"><span class="material-symbols-outlined">inbox</span><div>Inbox</div></button></li>';
     let i = 4;
 
     allProjects.forEach((project) => {
@@ -41,13 +44,16 @@ export default function displayProjects() {
         document.querySelector('.change-project>ul').appendChild(liPopup);
     })
     controlSidebar();
-    controlToDoPopup();
+    controlMenus();
 }
 
 document.querySelector('#remove-project').addEventListener('click', () => {
     let id = document.querySelector('header').getAttribute('data-id') - 4;
 
     allProjects.splice(id,1);
+    
+    groupedTasks[id+4].forEach((a) => allItems.splice(allItems.findIndex(b => a == b),1));
+
     displayProjects();
     displayTasks(0);
 })
