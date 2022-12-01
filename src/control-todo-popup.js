@@ -78,6 +78,8 @@ function toggleItemPopup() {
     additionalData.classList.add('hidden')
     datetime.classList.add('hidden');
     description.classList.add('hidden');
+    document.querySelector('#task-name').focus();
+    document.querySelector('#task-name').select();
 }
 
 controlToDoPopup();

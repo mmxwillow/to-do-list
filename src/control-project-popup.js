@@ -30,6 +30,8 @@ function toggleProjectPopup() {
     cover.classList.toggle('hidden');
     popup.classList.toggle('hidden');
     colors.classList.add('hidden');
+    document.querySelector('#new-project-name').focus();
+    document.querySelector('#new-project-name').select();
 }
 
 export function resetProjectForm(){
