@@ -47,14 +47,18 @@ export default function displayTasks(id=currentID) {
     groupedTasks[id].forEach((task) => {
         const li = document.createElement('li');
         let status = (task.isDone) ? 'checked' : '';
+        let btn = `<div class="hidden"></div>`;
+
+        if(id == 0 && task.project != "Inbox"){
+            let icon = allProjects.find(element => element.name == task.project);
+            btn = `<div class="tasks-project ${icon.color}"><span class="material-symbols-outlined">${icon.icon}</span><div>${task.project}</div></div>`;
+        }
 
         const item = `
                 <input type="checkbox" ${status}>
                 <div class="task-name">${task.title}</div>
                 <div class="date">${task.dueDate}</div>
-                <button class="edit">
-                        <span class="material-symbols-outlined">edit</span>
-                </button>
+                ${btn}
                 <button class="remove">
                     <span class="material-symbols-outlined">delete</span>
                 </button>
@@ -90,7 +94,7 @@ export default function displayTasks(id=currentID) {
             let id = button.parentElement.id.slice(0,1);
             let i = button.parentElement.id.slice(-1);
 
-            allItems.splice(allItems.findIndex(item => item == groupedTasks[id][i],1));
+            allItems.splice(allItems.findIndex(item => item === groupedTasks[id][i]),1);
             displayTasks();
         })
     })
