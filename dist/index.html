@@ -172,7 +172,32 @@
             </div>
     </div>
     <div class="task-view">
-        <div class="no-task">
+        <div class="details">
+            <div class="properties">
+                <button title="Due date" id="update-due-date" type="button">
+                    <span class="material-symbols-outlined">
+                        calendar_month
+                    </span>
+                    Today
+                </button>
+                <button title="Priority" id="update-priority" class="none" type="button"><span
+                    class="material-symbols-outlined">flag</span></button>
+            </div>
+            <div class="current-task-name">
+                <input type="checkbox">
+                <div>some random task</div>
+            </div>
+            <textarea name="description" id="current-description" cols="10" rows="10" placeholder="Write description here..."></textarea>
+            <div class="buttons">
+                <button title="Project" id="update-projects" type="button"><span class="material-symbols-outlined">inbox</span>
+                    <div id="tv-current-project">Inbox</div>
+                </button>
+                <button>
+                    <span class="material-symbols-outlined">delete</span>
+                </button>
+            </div>
+        </div>
+        <div class="no-task hidden">
             <span class="material-symbols-outlined">
                 ads_click
                 </span>
