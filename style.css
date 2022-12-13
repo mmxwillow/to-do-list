@@ -89,6 +89,8 @@ ul.projects{
     color: white;
     background-color:var(--medium-gray);
     border:none;
+    display:grid;
+    grid-template-columns:1fr;
 }
 .add-item-popup:hover{
     cursor:pointer;
@@ -128,11 +130,7 @@ ul.projects{
 .add-project-popup input:focus{
     outline:0;
 }
-.btns>button,
-.priority button,
-.change-project button,
-.add-project-popup button,
-.colors button{
+button{
     background: transparent;
     color:white;
     border:none;
@@ -177,7 +175,7 @@ ul.projects{
     color:white;
     border:none;
     font:inherit;
-    padding:0.5em;
+    width: calc(100% - 1em);
 }
 .description textarea:focus{
     outline:1px solid #444;
@@ -353,7 +351,7 @@ main button{
 .tasks button>span{
     font-size:18px;
 }
-.tasks input[type="checkbox"]{
+input[type="checkbox"]{
     appearance: none;
     border:1px solid;
     color:white;
@@ -361,7 +359,7 @@ main button{
     border-radius: 2px ;
     aspect-ratio: 1/1;
 }
-.tasks input[type="checkbox"]:checked{
+input[type="checkbox"]:checked{
     color: white;
     background-color: white;
 }
@@ -399,7 +397,7 @@ section:hover{
 .task-view{
     background-color: var(--dark-gray);
     border-left: 1px solid var(--medium-gray);
-    padding:2em;
+    padding:2em 3em;
     display:grid;
 }
 .no-task{
@@ -419,6 +417,41 @@ section:hover{
     position: absolute;
     top:0;
     left:-1em;
+}
+
+.details{
+    display: grid;
+    grid-template-rows: min-content min-content 1fr min-content;
+    gap:1em;
+}
+.properties{
+    display:flex;
+    justify-content:space-between;
+    border-bottom: 1px solid var(--medium-gray);
+    padding-bottom: 1em;
+}
+.buttons{
+    display:flex;
+    justify-content:space-between;
+}
+.details textarea{
+    background: none;
+    color:white;
+    border:transparent;
+    font: inherit;
+}
+.details textarea{
+    outline:none;
+}
+#update-projects{
+    justify-self: end;
+}
+.current-task-name{
+    display:grid;
+    grid-template-columns:min-content 1fr;
+    align-items: center;
+    gap:0.5em;
+    font-size: 18px;
 }
 
 
