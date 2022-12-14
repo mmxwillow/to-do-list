@@ -6,6 +6,8 @@ import { groupedTasks } from "./display-tasks";
 import { allItems } from "./todos";
 
 export default function displayProjects() {
+    let activeID = document.querySelectorAll('.active')[0].id;
+    
     document.querySelector('.projects').innerHTML = '';
     document.querySelector('.change-project>ul').innerHTML = '<li><button type="button"><span class="material-symbols-outlined">inbox</span><div>Inbox</div></button></li>';
     let i = 4;
@@ -45,6 +47,8 @@ export default function displayProjects() {
     })
     controlSidebar();
     controlMenus();
+
+    document.getElementById(activeID).classList.add('active');
 }
 
 document.querySelector('#remove-project').addEventListener('click', () => {

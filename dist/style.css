@@ -64,7 +64,8 @@ button:hover{
   'opsz' 48
 }
 .active>span,
-.colors button>span:hover{
+.colors button>span:hover,
+.colors2 button>span:hover{
     font-variation-settings:
     'FILL' 1 
 }
@@ -105,7 +106,7 @@ ul.projects{
     transform: translate(-50%, -50%);
     border-radius: 1em;
     padding:2em;
-    z-index: 1;
+    z-index: 2;
 }
 .cover,
 .project-cover{
@@ -113,13 +114,15 @@ ul.projects{
     height:100vh;
     width:100vw;
     background-color:rgba(0, 0, 0, 0.4);
+    z-index:1;
 }
 .item-popup{
     display: flex;
     flex-direction: column;
 }
 .item-popup input,
-.add-project-popup input{
+.add-project-popup input,
+.header input{
     color:white;
     font-size: 18px;
     background: transparent;
@@ -127,7 +130,8 @@ ul.projects{
     border-bottom: 1px solid;
 }
 .popup input:focus,
-.add-project-popup input:focus{
+.add-project-popup input:focus,
+.header input:focus{
     outline:0;
 }
 button{
@@ -208,7 +212,7 @@ button{
     padding:0.5em;
     border-radius: 5px;
     width:min-content;
-    z-index:1;
+    z-index:3;
 }
 .colors li:hover,
 .colors button:hover{
@@ -216,7 +220,8 @@ button{
 }
 .priority>ul,
 .change-project>ul,
-.colors>ul{
+.colors>ul,
+.colors2{
     display:flex;
     flex-direction: column;
     gap:0.5em;
@@ -224,6 +229,15 @@ button{
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+.colors2{
+    position:absolute;
+    background-color: #333;
+    padding:0.5em;
+    border-radius: 5px;
+    top:2em;
+    left:-0.5em;
+    z-index:2;
 }
 .priority button,
 .change-project button{
@@ -246,7 +260,7 @@ button{
     padding:1em;
     left:1em;
     border-radius: 5px;
-    z-index:1;
+    z-index:2;
     width:min-content;
 }
 .add-project-popup input{
@@ -279,8 +293,9 @@ main{
     flex-direction: column;
     gap:1em;
     padding:2em 3em;
+    z-index:-1;
 }
-header{
+header, .header{
     display: grid;
     grid-template-columns:min-content 1fr min-content;
     gap:1em;
