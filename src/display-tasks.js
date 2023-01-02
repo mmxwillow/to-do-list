@@ -1,5 +1,6 @@
 import { allItems, examples } from "./todos";
 import { allProjects } from "./projects";
+import { displayDetails } from "./display-details";
 
 export const groupedTasks = [];
 let currentID;
@@ -99,6 +100,7 @@ export default function displayTasks(id=currentID) {
         })
     })
     hideButtons();
+    displayDetails();
 }
 
 
