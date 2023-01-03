@@ -4,6 +4,7 @@ import addProject from "./projects"
 import displayProjects from './display-projects'
 import displayTasks from './display-tasks'
 import editProject from "./edit-project"
+import { controlDetails } from "./control-details-view"
 
 addToDoItem();
 controlProjectPopup();
@@ -11,3 +12,4 @@ addProject();
 displayProjects();
 displayTasks(0);
 editProject();
+controlDetails();

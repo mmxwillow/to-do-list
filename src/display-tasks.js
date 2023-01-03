@@ -60,9 +60,6 @@ export default function displayTasks(id=currentID) {
                 <div class="task-name">${task.title}</div>
                 <div class="date">${task.dueDate}</div>
                 ${btn}
-                <button class="remove">
-                    <span class="material-symbols-outlined">delete</span>
-                </button>
         `;
         li.className = task.priority;
         li.innerHTML = item;
@@ -80,25 +77,17 @@ export default function displayTasks(id=currentID) {
         }
     })
 
-    document.querySelectorAll('input[type="checkbox"').forEach((input) => {
+    document.querySelectorAll('.tasks input[type="checkbox"]').forEach((input) => {
         input.addEventListener('change', () => {
             let id = input.parentElement.id.slice(0,1);
             let i = input.parentElement.id.slice(-1);
             
             groupedTasks[id][i].changeStatus();
+            document.querySelector('.current-task-name input[type="checkbox"]').checked = groupedTasks[id][i].isDone;
             displayTasks();
         })
     })
 
-    document.querySelectorAll('.remove').forEach((button) => {
-        button.addEventListener('click', () => {
-            let id = button.parentElement.id.slice(0,1);
-            let i = button.parentElement.id.slice(-1);
-
-            allItems.splice(allItems.findIndex(item => item === groupedTasks[id][i]),1);
-            displayTasks();
-        })
-    })
     hideButtons();
     displayDetails();
 }
