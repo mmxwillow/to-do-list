@@ -1,6 +1,8 @@
 import { allItems, examples } from "./todos";
 import { allProjects } from "./projects";
 import { displayDetails } from "./display-details";
+import { formatProjectView } from "./format-datetime";
+import { isOverdue } from "./format-datetime";
 
 export const groupedTasks = [];
 let currentID;
@@ -49,6 +51,7 @@ export default function displayTasks(id=currentID) {
         const li = document.createElement('li');
         let status = (task.isDone) ? 'checked' : '';
         let btn = `<div class="hidden"></div>`;
+        let overdue = isOverdue(task.dueDate) ? 'overdue' : '';
 
         if(id == 0 && task.project != "Inbox"){
             let icon = allProjects.find(element => element.name == task.project);
@@ -58,8 +61,8 @@ export default function displayTasks(id=currentID) {
         const item = `
                 <input type="checkbox" ${status}>
                 <div class="task-name">${task.title}</div>
-                <div class="date">${task.dueDate}</div>
                 ${btn}
+                <div class="date ${overdue}">${formatProjectView(task.dueDate)}</div>
         `;
         li.className = task.priority;
         li.innerHTML = item;

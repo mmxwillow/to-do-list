@@ -1,5 +1,6 @@
 import { resetForm } from "./control-todo-popup";
 import displayTasks from './display-tasks'
+import format from "date-fns/format";
 
 class ToDoItem{
     constructor(title,description,dueDate,priority,project,isDone){
@@ -45,8 +46,10 @@ export default function addToDoItem() {
 }
 
 function getDate() {
-    const date = document.querySelector('.datetime input[type="date"]').value;
-    const time = document.querySelector('.datetime input[type="time"]').value;
+    let date = document.querySelector('.datetime input[type="date"]').value;
+    let time = document.querySelector('.datetime input[type="time"]').value;
+
+    if(!date) date = format(new Date(), 'yyyy-MM-dd');
 
     return `${date} ${time}`;
 }

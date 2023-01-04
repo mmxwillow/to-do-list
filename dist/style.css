@@ -328,7 +328,7 @@ h1{
 }
 .tasks li{
     display:grid;
-    grid-template-columns: min-content 1fr min-content min-content min-content;
+    grid-template-columns: min-content 1fr max-content max-content;
     align-items: center;
     position: relative;
 }
@@ -520,6 +520,9 @@ section:hover{
 }
 .update-datetime>input:focus{
     outline:1px solid #444;
+}
+.overdue{
+    color:rgb(200, 85, 85);
 }
 
 

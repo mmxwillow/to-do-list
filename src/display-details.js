@@ -1,5 +1,7 @@
 import { groupedTasks } from "./display-tasks";
 import { allProjects } from "./projects";
+import { formatDetailsView } from "./format-datetime";
+import { isOverdue } from "./format-datetime";
 
 const taskName = document.querySelector('.current-task-name input[type="text"]');
 const dueDate = document.querySelector('#update-due-date-title');
@@ -34,10 +36,13 @@ export function displayDetails(){
             document.querySelector('.no-task').classList.add('hidden');
 
             taskName.value = currentTask.title;
-            dueDate.innerHTML = currentTask.dueDate;
+            dueDate.innerHTML = formatDetailsView(currentTask.dueDate);
             priority.className = currentTask.priority;
             description.value = currentTask.description;
             projectTitle.innerHTML = currentTask.project;
+
+            
+            if(isOverdue(currentTask.dueDate)) dueDate.classList.add('overdue');
 
             if(currentTask.isDone) checkbox.checked = true;
             else checkbox.checked = false;
