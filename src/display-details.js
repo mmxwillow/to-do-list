@@ -1,7 +1,7 @@
 import { groupedTasks } from "./display-tasks";
 import { allProjects } from "./projects";
 
-const taskName = document.querySelector('.current-task-name div');
+const taskName = document.querySelector('.current-task-name input[type="text"]');
 const dueDate = document.querySelector('#update-due-date-title');
 const priority = document.querySelector('#update-priority');
 const description = document.querySelector('#current-description');
@@ -33,7 +33,7 @@ export function displayDetails(){
             document.querySelector('.details').classList.remove('hidden');
             document.querySelector('.no-task').classList.add('hidden');
 
-            taskName.innerHTML = currentTask.title;
+            taskName.value = currentTask.title;
             dueDate.innerHTML = currentTask.dueDate;
             priority.className = currentTask.priority;
             description.value = currentTask.description;

@@ -198,18 +198,61 @@
     <div class="task-view">
         <div class="details  hidden">
             <div class="properties">
-                <button title="Due date" id="update-due-date" type="button">
-                    <span class="material-symbols-outlined">
-                        calendar_month
-                    </span>
-                    <div id="update-due-date-title">Today</div>
-                </button>
+                <div title="Due date" id="update-due-date">
+                    <button id="show-datetime-inputs">
+                        <span class="material-symbols-outlined">
+                            calendar_month
+                        </span>
+                    </button>
+                    <div id="update-due-date-title" class="">Today</div>
+                    <div class="update-datetime hidden">
+                        <input type="date" name="" id="">
+                        <input type="time" name="" id="">
+                        <button id="confirm-new-datetime">
+                            <span class="material-symbols-outlined">
+                                check
+                            </span>
+                        </button>
+                    </div>
+                </div>
                 <button title="Priority" id="update-priority" class="none" type="button"><span
                     class="material-symbols-outlined">flag</span></button>
+                    <div class="update-priority-menu hidden">
+                        <ul>
+                            <li>
+                                <button id="none" class="update-priority" type="button">
+                                    <span class="material-symbols-outlined">
+                                        flag
+                                    </span>None
+                                </button>
+                            </li>
+                            <li>
+                                <button id="low" class="update-priority" type="button">
+                                    <span class="material-symbols-outlined">
+                                        flag
+                                    </span>Low
+                                </button>
+                            </li>
+                            <li>
+                                <button id="medium" class="update-priority" type="button">
+                                    <span class="material-symbols-outlined">
+                                        flag
+                                    </span>Medium
+                                </button>
+                            </li>
+                            <li>
+                                <button id="high" class="update-priority" type="button">
+                                    <span class="material-symbols-outlined">
+                                        flag
+                                    </span>High
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
             </div>
             <div class="current-task-name">
                 <input type="checkbox">
-                <div>some random task</div>
+                <input type="text" autocomplete="off" maxlength="50">
             </div>
             <textarea name="description" id="current-description" cols="10" rows="10" placeholder="Write description here..."></textarea>
             <div class="buttons">
@@ -219,6 +262,13 @@
                 <button id="remove">
                     <span class="material-symbols-outlined">delete</span>
                 </button>
+                <div class="update-project hidden">
+                    <ul>
+                        <li>
+                            <button type="button"><span class="material-symbols-outlined">inbox</span><div>Inbox</div></button>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="no-task">

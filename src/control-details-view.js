@@ -2,18 +2,28 @@ import { allItems } from "./todos";
 import { groupedTasks } from "./display-tasks";
 import displayTasks from "./display-tasks";
 
-export function controlDetails() {
-    const remove = document.querySelector('#remove');
-    const checkbox = document.querySelector('.current-task-name input[type="checkbox"]');
-    const taskName = document.querySelector('.current-task-name div');
+const remove = document.querySelector('#remove');
+const checkbox = document.querySelector('.current-task-name input[type="checkbox"]');
+const taskName = document.querySelector('.current-task-name input[type="text"]');
+const description = document.querySelector('#current-description');
+const priorityMenu = document.querySelector('.update-priority-menu');
+const showPriorityMenuBtn = document.querySelector('#update-priority')
+const priorityBtns = document.querySelectorAll('.update-priority');
+const projectsMenu = document.querySelector('.update-project');
+const showProjectsMenuBtn = document.querySelector('#update-projects')
+const currentProjectName = document.querySelector('#tv-current-project');
+const dateInput = document.querySelector('.update-datetime input[type="date"]');
+const timeInput = document.querySelector('.update-datetime input[type="time"]');
+const showDateTimeInputsBtn = document.querySelector('#show-datetime-inputs');
+const confirmDateTimeChangeBtn = document.querySelector('#confirm-new-datetime');
 
+
+export function controlDetails() {
     remove.addEventListener('click', () => {
         if (window.confirm("Are you sure you wanna delete this task?")) {
-            let taskID = taskName.getAttribute('data-current-id');
-            let id = taskID.slice(0, 1);
-            let i = taskID.slice(-1);
+            let currentTask = getCurrentTask();
 
-            allItems.splice(allItems.findIndex(item => item === groupedTasks[id][i]), 1);
+            allItems.splice(allItems.findIndex(item => item === currentTask), 1);
             displayTasks();
 
             document.querySelector('.details').classList.add('hidden');
@@ -22,11 +32,96 @@ export function controlDetails() {
     })
 
     checkbox.addEventListener('change', () => {
-        let taskID = taskName.getAttribute('data-current-id');
-        let id = taskID.slice(0, 1);
-        let i = taskID.slice(-1);
+        let currentTask = getCurrentTask();
         
-        groupedTasks[id][i].changeStatus();
+        currentTask.changeStatus();
         displayTasks();
     })
+
+    taskName.addEventListener('input', () => {
+        let currentTask = getCurrentTask();
+
+        currentTask.title = taskName.value;
+        displayTasks();
+    })
+
+    description.addEventListener('input', ()=> {
+        let currentTask = getCurrentTask();
+
+        currentTask.description = description.value;
+    })
+
+    showPriorityMenuBtn.addEventListener('click', () => {
+        priorityMenu.classList.toggle('hidden');
+    })
+
+    showProjectsMenuBtn.addEventListener('click', () => {
+        projectsMenu.classList.toggle('hidden');
+    })
+
+    priorityBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            showPriorityMenuBtn.className = btn.id;
+
+            let currentTask = getCurrentTask();
+            currentTask.priority = btn.id;
+            displayTasks();
+        })
+    })
+
+    controlProjects();
+
+    window.addEventListener('click', (e) => {
+        if(e.target !== showPriorityMenuBtn && e.target !== showPriorityMenuBtn.firstChild){
+            priorityMenu.classList.add('hidden');
+        }
+
+        if(e.target !== showProjectsMenuBtn && e.target !== showProjectsMenuBtn.firstChild && e.target !== currentProjectName){
+            projectsMenu.classList.add('hidden');
+        }
+    })
+
+    showDateTimeInputsBtn.addEventListener('click', () => {
+        document.querySelector('#update-due-date-title').classList.toggle('hidden');
+        document.querySelector('.update-datetime').classList.toggle('hidden');
+
+        let currentTask = getCurrentTask();
+        let datetime = currentTask.dueDate.split(' ');
+        dateInput.value = datetime[0];
+        timeInput.value = datetime[1];
+    })
+
+    confirmDateTimeChangeBtn.addEventListener('click', () => {
+        document.querySelector('#update-due-date-title').classList.toggle('hidden');
+        document.querySelector('.update-datetime').classList.toggle('hidden');
+
+        let currentTask = getCurrentTask();
+        currentTask.dueDate = `${dateInput.value} ${timeInput.value}`;
+        document.querySelector('#update-due-date-title').innerHTML = currentTask.dueDate;
+        displayTasks();
+    })
+}
+
+export function controlProjects(){
+    const allProjects = document.querySelectorAll('.update-project button')
+
+    allProjects.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            showProjectsMenuBtn.firstChild.innerHTML = btn.firstChild.innerHTML;
+            currentProjectName.innerHTML = btn.lastChild.innerHTML;
+            showProjectsMenuBtn.className = btn.className;
+
+            let currentTask = getCurrentTask();
+            currentTask.project = currentProjectName.innerHTML;
+            displayTasks();
+        })
+    })
+}
+
+function getCurrentTask(){
+    let taskID = taskName.getAttribute('data-current-id');
+    let id = taskID.slice(0, 1);
+    let i = taskID.slice(-1);
+
+    return groupedTasks[id][i];
 }

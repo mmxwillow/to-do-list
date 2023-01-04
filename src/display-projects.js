@@ -4,12 +4,15 @@ import { allProjects } from "./projects";
 import displayTasks from "./display-tasks";
 import { groupedTasks } from "./display-tasks";
 import { allItems } from "./todos";
+import { controlProjects } from "./control-details-view";
 
 export default function displayProjects() {
     let activeID = document.querySelectorAll('.active')[0].id;
     
     document.querySelector('.projects').innerHTML = '';
     document.querySelector('.change-project>ul').innerHTML = '<li><button type="button"><span class="material-symbols-outlined">inbox</span><div>Inbox</div></button></li>';
+    document.querySelector('.update-project>ul').innerHTML = '<li><button type="button"><span class="material-symbols-outlined">inbox</span><div>Inbox</div></button></li>';
+
     let i = 4;
 
     allProjects.forEach((project) => {
@@ -28,27 +31,36 @@ export default function displayProjects() {
 
         document.querySelector('.projects').appendChild(liSidebar);
 
-        const liPopup = document.createElement('li');
-        const button = document.createElement('button');
-        const spanPopup = document.createElement('span');
-        const divPopup = document.createElement('div');
+        const popup1 = generatePopup(project);
+        const popup2 = generatePopup(project);
 
-        button.type = 'button';
-        button.className = project.color;
-        spanPopup.innerHTML = project.icon;
-        spanPopup.className = 'material-symbols-outlined';
-        divPopup.innerHTML = project.name;
-
-        button.appendChild(spanPopup);
-        button.appendChild(divPopup);
-        liPopup.appendChild(button);
-
-        document.querySelector('.change-project>ul').appendChild(liPopup);
+        document.querySelector('.change-project>ul').appendChild(popup1);
+        document.querySelector('.update-project>ul').appendChild(popup2);
     })
     controlSidebar();
     controlMenus();
+    controlProjects();
 
     document.getElementById(activeID).classList.add('active');
+}
+
+function generatePopup(project){
+    const liPopup = document.createElement('li');
+    const button = document.createElement('button');
+    const spanPopup = document.createElement('span');
+    const divPopup = document.createElement('div');
+
+    button.type = 'button';
+    button.className = project.color;
+    spanPopup.innerHTML = project.icon;
+    spanPopup.className = 'material-symbols-outlined';
+    divPopup.innerHTML = project.name;
+
+    button.appendChild(spanPopup);
+    button.appendChild(divPopup);
+    liPopup.appendChild(button);
+
+    return liPopup;
 }
 
 document.querySelector('#remove-project').addEventListener('click', () => {

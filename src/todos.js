@@ -45,8 +45,8 @@ export default function addToDoItem() {
 }
 
 function getDate() {
-    const date = document.querySelector('input[type="date"]').value;
-    const time = document.querySelector('input[type="time"]').value;
+    const date = document.querySelector('.datetime input[type="date"]').value;
+    const time = document.querySelector('.datetime input[type="time"]').value;
 
-    return date+time;
+    return `${date} ${time}`;
 }
