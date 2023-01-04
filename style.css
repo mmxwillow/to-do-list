@@ -219,7 +219,9 @@ button{
     filter:opacity(100%);
 }
 .priority>ul,
+.update-priority-menu ul,
 .change-project>ul,
+.update-project>ul,
 .colors>ul,
 .colors2{
     display:flex;
@@ -240,7 +242,9 @@ button{
     z-index:2;
 }
 .priority button,
-.change-project button{
+.update-priority-menu button,
+.change-project button,
+.update-project button{
     width:100%;
     justify-items:start;
     padding:0.2em;
@@ -249,6 +253,12 @@ button{
 .change-project button:hover{
     filter:opacity(100%);
     background-color: #2a2a2a;
+    border-radius: 5px;
+}
+.update-priority-menu button:hover,
+.update-project button:hover{
+    filter:opacity(100%);
+    background-color: #252525;
     border-radius: 5px;
 }
 
@@ -444,10 +454,27 @@ section:hover{
     justify-content:space-between;
     border-bottom: 1px solid var(--medium-gray);
     padding-bottom: 1em;
+    position: relative;
+}
+.update-priority-menu{
+    position: absolute;
+    right:0;
+    top:2em;
+    background-color: var(--medium-gray);
+    padding:0.5em;
+    border-radius: 5px;
+}
+.update-project{
+    background-color: var(--medium-gray);
+    padding:0.5em;
+    border-radius: 5px;
+    position: absolute;
+    bottom:2em;
 }
 .buttons{
     display:flex;
     justify-content:space-between;
+    position: relative;
 }
 .details textarea{
     background: none;
@@ -467,6 +494,32 @@ section:hover{
     align-items: center;
     gap:0.5em;
     font-size: 18px;
+}
+.current-task-name input[type=text]{
+    background:none;
+    border:none;
+    font-size: 18px;
+    color:white;
+}
+.current-task-name input[type=text]:focus{
+    outline: none;
+}
+#update-due-date{
+    display:flex;
+    align-items: center;
+    gap:0.5em;
+}
+.update-datetime{
+    display: flex;
+    gap:0.5em;
+}
+.update-datetime>input{
+    background:none;
+    border:none;
+    color:white;
+}
+.update-datetime>input:focus{
+    outline:1px solid #444;
 }
 
 
