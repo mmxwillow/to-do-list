@@ -15,7 +15,8 @@ export function displayDetails(){
     const visibleTasks = document.querySelectorAll('.tasks li');
 
     visibleTasks.forEach((task) => {
-        task.addEventListener('click', () => {
+        task.addEventListener('click', (ev) => {
+            if(ev.target == task.firstElementChild) return;
             taskName.setAttribute('data-current-id', task.id);
 
             let id = task.id.slice(0,1);
@@ -42,7 +43,8 @@ export function displayDetails(){
             projectTitle.innerHTML = currentTask.project;
 
             
-            if(isOverdue(currentTask.dueDate)) dueDate.classList.add('overdue');
+            if(isOverdue(currentTask.dueDate) && !currentTask.isDone) dueDate.classList.add('overdue');
+            else dueDate.classList.remove('overdue');
 
             if(currentTask.isDone) checkbox.checked = true;
             else checkbox.checked = false;

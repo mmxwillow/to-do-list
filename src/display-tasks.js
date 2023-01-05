@@ -51,7 +51,7 @@ export default function displayTasks(id=currentID) {
         const li = document.createElement('li');
         let status = (task.isDone) ? 'checked' : '';
         let btn = `<div class="hidden"></div>`;
-        let overdue = isOverdue(task.dueDate) ? 'overdue' : '';
+        let overdue = (!task.isDone && isOverdue(task.dueDate)) ? 'overdue' : '';
 
         if(id == 0 && task.project != "Inbox"){
             let icon = allProjects.find(element => element.name == task.project);

@@ -25,7 +25,7 @@ const locale = {
 };
 
 export function formatProjectView(temp) {
-  if(!temp) return "";
+  if(temp == " ") return "";
   if(temp.split(' ')[1]){
     let datetime = parse(temp, 'yyyy-MM-dd HH:mm', new Date());
     if(isToday(datetime)) return format(datetime, 'HH:mm');
@@ -40,7 +40,7 @@ export function formatProjectView(temp) {
 }
 
 export function formatDetailsView(temp){
-  if(!temp) return "";
+  if(temp == " ") return "";
   if(temp.split(' ')[1]){
     let datetime = parse(temp, 'yyyy-MM-dd HH:mm', new Date());
     if(isThisYear(datetime)) return format(datetime, 'MMM dd, HH:mm');
@@ -54,7 +54,7 @@ export function formatDetailsView(temp){
 }
 
 export function isOverdue(temp){
-  if(!temp) return "";
+  if(temp == " ") return "";
   let datetime = '';
   if(temp.split(' ')[1]) datetime = parse(temp, 'yyyy-MM-dd HH:mm', new Date());
   else{

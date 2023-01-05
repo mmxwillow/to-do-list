@@ -20,8 +20,8 @@ class ToDoItem{
 export const allItems = [];
 
 export function examples(){
-    const example1 = new ToDoItem("Bake a cake", "","","","Inbox",false);
-    const example2 = new ToDoItem("Send invitations", "","","","Inbox",true);
+    const example1 = new ToDoItem("Bake a cake", ""," ","","Inbox",false);
+    const example2 = new ToDoItem("Send invitations", ""," ","","Inbox",true);
 
     allItems.push(example1);
     allItems.push(example2);
@@ -49,7 +49,7 @@ function getDate() {
     let date = document.querySelector('.datetime input[type="date"]').value;
     let time = document.querySelector('.datetime input[type="time"]').value;
 
-    if(!date) date = format(new Date(), 'yyyy-MM-dd');
+    if(time && !date) date = format(new Date(), 'yyyy-MM-dd');
 
     return `${date} ${time}`;
 }

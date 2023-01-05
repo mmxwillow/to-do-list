@@ -26,7 +26,6 @@ export default function editProject(){
 
     window.addEventListener('click', (e) => {
         if(e.target !== changeColor && e.target !== changeColor.firstChild && e.target !== changeProjectName && e.target !== editProjectBtn && !colors.contains(e.target)){
-            console.log('test')
             header.classList.remove('hidden');
             form.classList.add('hidden');
         } 

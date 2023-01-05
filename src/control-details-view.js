@@ -1,6 +1,9 @@
 import { allItems } from "./todos";
 import { groupedTasks } from "./display-tasks";
 import displayTasks from "./display-tasks";
+import { formatDetailsView } from "./format-datetime";
+import format from "date-fns/format";
+import { isOverdue } from "./format-datetime";
 
 const remove = document.querySelector('#remove');
 const checkbox = document.querySelector('.current-task-name input[type="checkbox"]');
@@ -16,6 +19,7 @@ const dateInput = document.querySelector('.update-datetime input[type="date"]');
 const timeInput = document.querySelector('.update-datetime input[type="time"]');
 const showDateTimeInputsBtn = document.querySelector('#show-datetime-inputs');
 const confirmDateTimeChangeBtn = document.querySelector('#confirm-new-datetime');
+const dueDate = document.querySelector('#update-due-date-title');
 
 
 export function controlDetails() {
@@ -35,6 +39,8 @@ export function controlDetails() {
         let currentTask = getCurrentTask();
         
         currentTask.changeStatus();
+        if(isOverdue(currentTask.dueDate) && !currentTask.isDone) dueDate.classList.add('overdue');
+        else dueDate.classList.remove('overdue');
         displayTasks();
     })
 
@@ -92,12 +98,16 @@ export function controlDetails() {
     })
 
     confirmDateTimeChangeBtn.addEventListener('click', () => {
-        document.querySelector('#update-due-date-title').classList.toggle('hidden');
+        dueDate.classList.toggle('hidden');
         document.querySelector('.update-datetime').classList.toggle('hidden');
 
         let currentTask = getCurrentTask();
-        currentTask.dueDate = `${dateInput.value} ${timeInput.value}`;
-        document.querySelector('#update-due-date-title').innerHTML = currentTask.dueDate;
+        let date = dateInput.value;
+        if(timeInput.value && !dateInput.value) date = format(new Date(), 'yyyy-MM-dd');
+        currentTask.dueDate = `${date} ${timeInput.value}`;
+        dueDate.innerHTML = formatDetailsView(currentTask.dueDate);
+        if(isOverdue(currentTask.dueDate) && !currentTask.isDone) dueDate.classList.add('overdue');
+        else dueDate.classList.remove('overdue');
         displayTasks();
     })
 }
