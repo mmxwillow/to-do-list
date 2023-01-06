@@ -3,6 +3,8 @@ import { allProjects } from "./projects";
 import { displayDetails } from "./display-details";
 import { formatProjectView } from "./format-datetime";
 import { isOverdue } from "./format-datetime";
+import { tasksToday } from "./group-tasks-by-date";
+import { tasksThisWeek } from "./group-tasks-by-date";
 
 export const groupedTasks = [];
 let currentID;
@@ -15,8 +17,8 @@ export function groupTasks() {
     }
     isFirstSession = false;
     let inbox = allItems.filter(item => item.project == "Inbox");
-    let today = [];
-    let thisWeek = [];
+    let today = tasksToday();
+    let thisWeek = tasksThisWeek();
     groupedTasks[0] = allItems;
     groupedTasks[1] = inbox;
     groupedTasks[2] = today;
