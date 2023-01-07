@@ -6,6 +6,8 @@ export default function controlSidebar() {
 
         projectsAll.forEach((project) => {
             project.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.add('moved');
+                document.querySelector('.sidebar-cover').classList.add('hidden');
                 clearActiveClass();
                 project.classList.add('active');
                 displayTasks(project.id);

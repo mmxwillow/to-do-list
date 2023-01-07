@@ -103,7 +103,7 @@ function controlCompleted() {
     const completed = document.querySelector('.completed');
     const button = document.querySelector('section button span');
     const menu = document.querySelector('.project-options');
-    const menuButton = document.querySelector('header button');
+    const menuButton = document.querySelector('.project-settings');
     const toggle = document.querySelector('#completed-toggle');
 
     header.addEventListener('click', () => {

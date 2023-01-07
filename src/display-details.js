@@ -10,6 +10,8 @@ const description = document.querySelector('#current-description');
 const projectIcon = document.querySelector('#update-projects span');
 const projectTitle = document.querySelector('#tv-current-project');
 const checkbox = document.querySelector('.current-task-name input[type="checkbox"]');
+let mediaQuery = window.matchMedia('(max-width: 1150px)');
+
 
 export function displayDetails(){
     const visibleTasks = document.querySelectorAll('.tasks li');
@@ -48,6 +50,11 @@ export function displayDetails(){
 
             if(currentTask.isDone) checkbox.checked = true;
             else checkbox.checked = false;
+
+            if(mediaQuery.matches){
+                document.querySelector('.task-view').classList.add('visible');
+                document.querySelector('.content').classList.add('hidden');
+            }
         })
     })
 }
