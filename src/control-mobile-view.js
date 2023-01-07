@@ -19,6 +19,7 @@ export function controlMobileView() {
         sidebar.classList.remove('moved');
         cover.classList.remove('hidden');
         showPopup.classList.add('hidden');
+        document.querySelector('.project-cover').classList.add('hidden');
     })
 
     cover.addEventListener('click', () => {

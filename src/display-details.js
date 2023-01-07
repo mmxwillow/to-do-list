@@ -51,10 +51,20 @@ export function displayDetails(){
             if(currentTask.isDone) checkbox.checked = true;
             else checkbox.checked = false;
 
-            if(mediaQuery.matches){
-                document.querySelector('.task-view').classList.add('visible');
-                document.querySelector('.content').classList.add('hidden');
-            }
+            checkMediaQuery();
+
+            mediaQuery.addEventListener('change', checkMediaQuery);
         })
     })
+}
+
+function checkMediaQuery(){
+    if(mediaQuery.matches){
+        document.querySelector('.task-view').classList.add('visible');
+        document.querySelector('.content').classList.add('hidden');
+    }
+    else{
+        document.querySelector('.task-view').classList.remove('visible');
+        document.querySelector('.content').classList.remove('hidden');
+    }
 }
