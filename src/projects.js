@@ -34,6 +34,7 @@ export default function addProject() {
     document.querySelector('#submit-project').addEventListener('click', (ev) => {
         ev.preventDefault();
         const projectName = document.querySelector('#new-project-name').value;
+        if(!projectName) return;
         const color = document.querySelector('#current-color').className;
         const icon = document.querySelector('#current-color>span').innerHTML;
 

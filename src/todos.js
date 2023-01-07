@@ -54,6 +54,7 @@ export default function addToDoItem() {
     document.querySelector('#submit-task').addEventListener('click', (ev) => {
         ev.preventDefault();
         const taskName = document.querySelector('#task-name').value;
+        if(!taskName) return;
         const taskDescription = document.querySelector('textarea').value;
         const taskDueDate = getDate();
         const taskPriority = document.querySelector('#priority').className;

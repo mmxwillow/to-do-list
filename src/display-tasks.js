@@ -10,6 +10,7 @@ import { setItems } from "./local-storage";
 export const groupedTasks = [];
 let currentID;
 let isHidden = false;
+let isCollapsed = false;
 
 export function groupTasks() {
     let inbox = allItems.filter(item => item.project == "Inbox");
@@ -74,6 +75,9 @@ export default function displayTasks(id=currentID) {
                 document.querySelector('section').classList.remove('hidden');
                 document.querySelector('.completed').classList.remove('hidden');
             }
+            if(isCollapsed){
+                document.querySelector('.completed').classList.add('hidden');
+            }
             document.querySelector('.completed').appendChild(li);
         }
     })
@@ -106,6 +110,7 @@ function controlCompleted() {
     header.addEventListener('click', () => {
         completed.classList.toggle('hidden');
         button.innerHTML = (button.innerHTML === 'expand_more') ? 'expand_less' : 'expand_more';
+        isCollapsed = !isCollapsed;
     })
 
     menuButton.addEventListener('click', () => {
@@ -114,8 +119,16 @@ function controlCompleted() {
 
     toggle.addEventListener('click', ()=> {
         isHidden = !isHidden;
-        document.querySelector('section').classList.toggle('hidden');
-        document.querySelector('.completed').classList.toggle('hidden');
+        if(isHidden){
+            document.querySelector('section').classList.add('hidden');
+            document.querySelector('.completed').classList.add('hidden');
+        }
+        else{
+            document.querySelector('section').classList.remove('hidden');
+            document.querySelector('.completed').classList.remove('hidden');
+            isCollapsed = false;
+            button.innerHTML = 'expand_more';
+        }
         toggle.innerHTML = (toggle.innerHTML.includes("Hide")) ? "Show completed" : "Hide completed";
     })
 

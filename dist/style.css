@@ -15,6 +15,7 @@ body{
     grid-template-columns: 260px 1fr 1fr;
     font-family: sans-serif;
     color:white;
+    overflow: hidden;
 }
 .sidebar{
     background-color:var(--medium-gray);
@@ -301,7 +302,9 @@ button{
 }
 
 
-
+.content{
+    overflow: auto;
+}
 main{
     display: flex;
     flex-direction: column;
