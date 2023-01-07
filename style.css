@@ -641,4 +641,7 @@ section:hover{
     .datetime > input{
         font-size: 10px;
     }
+    .add-project-popup{
+        background-color: var(--dark-gray);
+    }
 }
