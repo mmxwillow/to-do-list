@@ -5,6 +5,7 @@ import displayTasks from "./display-tasks";
 import { groupedTasks } from "./display-tasks";
 import { allItems } from "./todos";
 import { controlProjects } from "./control-details-view";
+import { setItems } from "./local-storage";
 
 export default function displayProjects() {
     let activeID = document.querySelectorAll('.active')[0].id;
@@ -40,6 +41,7 @@ export default function displayProjects() {
     controlSidebar();
     controlMenus();
     controlProjects();
+    setItems();
 
     document.getElementById(activeID).classList.add('active');
 }
@@ -69,6 +71,7 @@ document.querySelector('#remove-project').addEventListener('click', () => {
     allProjects.splice(id,1);
     
     groupedTasks[id+4].forEach((a) => allItems.splice(allItems.findIndex(b => a == b),1));
+    document.getElementById('0').classList.add('active');
 
     displayProjects();
     displayTasks(0);

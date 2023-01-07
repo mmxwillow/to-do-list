@@ -5,17 +5,13 @@ import { formatProjectView } from "./format-datetime";
 import { isOverdue } from "./format-datetime";
 import { tasksToday } from "./group-tasks-by-date";
 import { tasksThisWeek } from "./group-tasks-by-date";
+import { setItems } from "./local-storage";
 
 export const groupedTasks = [];
 let currentID;
 let isHidden = false;
-let isFirstSession = true;
 
 export function groupTasks() {
-    if (allItems.length == 0 && isFirstSession) {
-        examples();
-    }
-    isFirstSession = false;
     let inbox = allItems.filter(item => item.project == "Inbox");
     let today = tasksToday();
     let thisWeek = tasksThisWeek();
@@ -95,6 +91,7 @@ export default function displayTasks(id=currentID) {
 
     hideButtons();
     displayDetails();
+    setItems();
 }
 
 

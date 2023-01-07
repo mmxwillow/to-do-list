@@ -6,7 +6,9 @@ import displayTasks from './display-tasks'
 import editProject from "./edit-project"
 import { controlDetails } from "./control-details-view"
 import { controlMobileView } from "./control-mobile-view"
+import { getItems } from "./local-storage"
 
+getItems();
 addToDoItem();
 controlProjectPopup();
 addProject();

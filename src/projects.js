@@ -1,5 +1,8 @@
 import {resetProjectForm} from './control-project-popup'
 import displayProjects from './display-projects'
+import { parsedProjects } from './local-storage';
+import { setItems } from "./local-storage";
+
 
 class Project{
     constructor(name,color,icon){
@@ -9,17 +12,23 @@ class Project{
     }
 }
 
-export const allProjects = [];
+export let allProjects = [];
 
-const example1 = new Project("Mike's b-day", "color-2", "fiber_manual_record");
-const example2 = new Project("Personal website", "color-1", "fiber_manual_record");
-const example3 = new Project("Kitchen makeover", "color-3", "fiber_manual_record");
-const example4 = new Project("Shopping list", "color-5", "fiber_manual_record");
+export function projectExamples() {
+    const example1 = new Project("Tutorial!", "color-2", "fiber_manual_record");
+    const example2 = new Project("Personal website", "color-5", "fiber_manual_record");
+    const example3 = new Project("B-day party", "color-3", "fiber_manual_record");
 
-allProjects.push(example1);
-allProjects.push(example2);
-allProjects.push(example3);
-allProjects.push(example4);
+    allProjects.push(example1);
+    allProjects.push(example2);
+    allProjects.push(example3);
+
+    setItems();
+}
+
+export function importProjects(){
+    allProjects = parsedProjects;
+}
 
 export default function addProject() {
     document.querySelector('#submit-project').addEventListener('click', (ev) => {

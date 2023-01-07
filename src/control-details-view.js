@@ -55,6 +55,7 @@ export function controlDetails() {
         let currentTask = getCurrentTask();
 
         currentTask.description = description.value;
+        displayTasks();
     })
 
     showPriorityMenuBtn.addEventListener('click', () => {
