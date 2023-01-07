@@ -149,13 +149,17 @@ button{
 }
 .btns{
     display:grid;
-    grid-template-columns: repeat(4,min-content) 1fr;
+    grid-template-columns: repeat(3,min-content) 1fr min-content;
     justify-content: start;
     gap:0.4em;
     padding-top:1em;
 }
 .btns>button:last-child{
     justify-self: end;
+}
+#projects{
+    display:flex;
+    overflow: hidden;
 }
 .additional-data{
     display:grid;
@@ -186,7 +190,6 @@ button{
 }
 #current-project{
     overflow:hidden;
-    max-width:20ch;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -199,6 +202,7 @@ button{
     background-color: #333;
     padding:0.5em;
     border-radius: 5px;
+    z-index:1;
 }
 .change-project{
     left:7.6em;
@@ -274,7 +278,7 @@ button{
     width:min-content;
 }
 .add-project-popup input{
-    font-size:16px;
+    font-size: 16px;
     width:18ch;
 }
 .projects>li>div{
@@ -345,7 +349,7 @@ h1{
     display:flex;
     align-items:center;
     justify-content:end;
-    font-size:10px;
+    font-size: 10px;
 }
 .tasks-project>div{
     overflow: hidden;
@@ -545,4 +549,96 @@ section:hover{
 .low>span,
 #low>span{
     color:#ffbb00;
+}
+
+#go-back{
+    display:none;
+}
+.sidebar-cover{
+    position: fixed;
+    left:0;
+    top:0;
+    height:100vh;
+    width:100vw;
+    z-index:1;
+    background-color:transparent;
+}
+
+
+@media (max-width: 1150px) {
+    body{
+        grid-template-columns: 260px 1fr;
+    }
+    .task-view{
+        display:none;
+    }
+    .visible{
+        display: grid;
+    }
+    #go-back{
+        display:inline;
+    }
+}
+
+@media (max-width: 700px){
+    *{
+        font-size:13px;
+    }
+    body{
+        grid-template-columns: 1fr;
+    }
+    .sidebar{
+        width:250px;
+        height:100vh;
+        position: fixed;
+        z-index:1;
+        left:0;
+        transition: 500ms;
+    }
+    .project-cover{
+        z-index:0;
+    }
+    .moved{
+        left:-250px;
+    }
+
+    .item-popup input,
+    .add-project-popup input,
+    .header input,
+    .current-task-name,
+    .current-task-name input[type=text]{
+        font-size: 13px;
+    }
+    h1{
+        font-size: 20px;
+    }
+    .priority{
+        left: 4.4em;
+    }
+    .change-project{
+        left: 6.3em;
+    }
+    .tasks-project > div,
+    .date{
+        font-size: 8px;
+    }
+    .material-symbols-outlined{
+        font-size:20px;
+    }
+    main{
+        padding:2em;
+    }
+    .tasks{
+        padding: 0 0.2em;
+    }
+    .popup{
+        width:70%;
+        padding:1.5em;
+    }
+    .popup .material-symbols-outlined{
+        font-size:16px;
+    }
+    .datetime > input{
+        font-size: 10px;
+    }
 }

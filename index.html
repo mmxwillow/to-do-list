@@ -13,7 +13,8 @@
 </head>
 
 <body>
-    <div class="sidebar">
+    <div class="sidebar-cover hidden"></div>
+    <div class="sidebar moved">
         <div class="default list">
             <ul>
                 <li id="0" class="active"><span class="material-symbols-outlined">home_storage</span><div>All</div></li>
@@ -94,8 +95,9 @@
             </form>
             <header>
                 <span class="material-symbols-outlined"></span>
+                <button class="menu hidden"><span class="material-symbols-outlined">menu</span></button>
                 <h1></h1>
-                <button><span class="material-symbols-outlined">more_vert</span></button>
+                <button class="project-settings"><span class="material-symbols-outlined">more_vert</span></button>
                 <ul class="project-options hidden">
                     <li id="completed-toggle">Hide completed</li>
                     <li id="edit-project">Edit project</li>
@@ -198,6 +200,9 @@
     <div class="task-view">
         <div class="details  hidden">
             <div class="properties">
+                <button id="go-back"><span class="material-symbols-outlined">
+                    arrow_back
+                    </span></button>
                 <div title="Due date" id="update-due-date">
                     <button id="show-datetime-inputs">
                         <span class="material-symbols-outlined">
