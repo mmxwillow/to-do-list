@@ -8,6 +8,8 @@ export default function controlSidebar() {
             project.addEventListener('click', () => {
                 document.querySelector('.sidebar').classList.add('moved');
                 document.querySelector('.sidebar-cover').classList.add('hidden');
+                document.querySelector('.task-view').classList.remove('visible');
+                document.querySelector('.content').classList.remove('hidden');
                 clearActiveClass();
                 project.classList.add('active');
                 displayTasks(project.id);

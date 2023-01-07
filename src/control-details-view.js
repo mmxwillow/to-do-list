@@ -32,6 +32,9 @@ export function controlDetails() {
 
             document.querySelector('.details').classList.add('hidden');
             document.querySelector('.no-task').classList.remove('hidden');
+
+            document.querySelector('.task-view').classList.remove('visible');
+            document.querySelector('.content').classList.remove('hidden');
         }
     })
 
